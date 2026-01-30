@@ -1,15 +1,13 @@
+import asyncio
 from fastapi import FastAPI
-import threading
-import bot  # this imports bot.py and starts polling
+from bot import start_bot
 
 app = FastAPI()
 
 @app.get("/")
-def root():
-    return {"status": "ok", "bot": "running"}
+async def root():
+    return {"status": "ok", "service": "telegram-bot"}
 
-def start():
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
-
-threading.Thread(target=start).start()
+@app.on_event("startup")
+async def startup_event():
+    asyncio.create_task(start_bot())

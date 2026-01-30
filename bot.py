@@ -3,7 +3,7 @@ from aiogram import Bot, Dispatcher, executor
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from config import BOT_TOKEN
 from app.database.mongo import init_db
-from app.handlers import start, common, registration, chat_ai, chat_human, premium
+from app.handlers import start, common, registration, chat_ai, chat_human, premium, profile
 from app.admin import commands
 
 logging.basicConfig(level=logging.INFO)
@@ -17,6 +17,7 @@ chat_ai.register(dp)
 chat_human.register(dp)
 premium.register(dp)
 common.register(dp)
+profile.register(dp)
 
 # Admin handlers
 commands.register(dp)

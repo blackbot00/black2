@@ -16,7 +16,6 @@ registration.register(dp)
 chat_ai.register(dp)
 chat_human.register(dp)
 premium.register(dp)
-profile.register(dp)
 common.register(dp)
 
 # Admin handlers
